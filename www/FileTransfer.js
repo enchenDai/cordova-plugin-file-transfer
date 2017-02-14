@@ -148,7 +148,7 @@ FileTransfer.prototype.upload = function(filePath, server, successCallback, erro
 
     var fail = errorCallback && function(e) {
         var error = new FileTransferError(e.code, e.source, e.target, e.http_status, e.body, e.exception);
-        errorCallback(error);
+        errorCallback(error,headers);
     };
 
     var self = this;
@@ -159,7 +159,7 @@ FileTransfer.prototype.upload = function(filePath, server, successCallback, erro
             }
         } else {
             if (successCallback) {
-                successCallback(result);
+                successCallback(result,headers);
             }
         }
     };
